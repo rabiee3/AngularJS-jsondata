@@ -1,0 +1,175 @@
+{
+
+            "123": {
+                "name": "Tenrox-R1_1235",
+                "type": "Build",
+                "owner": "",
+                "timestarted": "",
+                "state": "Pending",
+                "Metrics": {
+                    "Test": 64,
+                    "Maintainability": 40,
+                    "Security": 50,
+                    "Workmanship": 20,
+                    "progress": 0
+                },
+                "Build": {
+                    "debug": "",
+                    "release": "",
+                    "time": "10:46am - 4/17/2014",
+                    "progress": 0,
+                    "status": "Pending"
+                },
+                "UnitTest": {
+                    "testspassed": 400,
+                    "totaltests": 1300,
+                    "codecovered": 76,
+                    "status": "Pending"
+                },
+                "Functional": {
+                    "testspassed": 200,
+                    "totaltests": 2000,
+                    "codecovered": 80,
+                    "status": "Pending"
+                }
+
+            },
+            "124": {
+                "name": "432461",
+                "type": "Firewall",
+                "owner": "jtuck",
+                "timestarted": "4/18/2014 12:12pm",
+                "state": "",
+                "Metrics": {
+                    "Test": 64,
+                    "Maintainability": 40,
+                    "Security": 50,
+                    "Workmanship": 60,
+                    "progress": 100
+                },
+                "Build": {
+                    "debug": "",
+                    "release": "",
+                    "time": "10:46am - 4/17/2014",
+                    "progress": 100,
+                    "status": "Running"
+                },
+                "UnitTest": {
+                    "testspassed": 1300,
+                    "totaltests": 1300,
+                    "codecovered": 76,
+                    "status": "Accepted"
+                },
+                "Functional": {
+                    "testspassed": 2000,
+                    "totaltests": 2000,
+                    "codecovered": 80,
+                    "status": "Accepted"
+                }
+
+            },
+            "125": {
+                "name": "432462",
+                "type": "Firewall",
+                "owner": "jtuck",
+                "timestarted": "4/18/2014 12:12pm",
+                "state": "",
+                "Metrics": {
+                    "Test": 62,
+                    "Maintainability": 40,
+                    "Security": 70,
+                    "Workmanship": 50,
+                    "progress": 100
+                },
+                "Build": {
+                    "debug": "",
+                    "release": "",
+                    "time": "10:46am - 4/17/2014",
+                    "progress": 100,
+                    "status": "Running"
+                },
+                "UnitTest": {
+                    "testspassed": 1000,
+                    "totaltests": 1300,
+                    "codecovered": 60,
+                    "status": "Accepted"
+                },
+                "Functional": {
+                    "testspassed": 400,
+                    "totaltests": 2000,
+                    "codecovered": 90,
+                    "status": "Accepted"
+                }
+
+            },
+            "126": {
+                "name": "Tenrox-R1_1234",
+                "type": "Build",
+                "owner": "",
+                "timestarted": "11:46am - 4/18/2014",
+                "state": "Complete",
+                "Metrics": {
+                    "Test": 64,
+                    "Maintainability": 40,
+                    "Security": 45,
+                    "Workmanship": 70,
+                    "progress": 100
+                },
+                "Build": {
+                    "debug": "",
+                    "release": "",
+                    "time": "10:46am - 4/17/2014",
+                    "progress": 100,
+                    "status": "Complete"
+                },
+                "UnitTest": {
+                    "testspassed": 1000,
+                    "totaltests": 1300,
+                    "codecovered": 20,
+                    "status": "Pending"
+                },
+                "Functional": {
+                    "testspassed": 1200,
+                    "totaltests": 2000,
+                    "codecovered": 60,
+                    "status": "Pending"
+                }
+
+            },
+            "127": {
+
+                "name": "432463",
+                "type": "Firewall",
+                "owner": "jtuck",
+                "timestarted": "4/18/2014 12:12pm",
+                "state": "",
+                "Metrics": {
+                    "Test": 20,
+                    "Maintainability": 40,
+                    "Security": 50,
+                    "Workmanship": 50,
+                    "progress": 70
+                },
+                "Build": {
+                    "debug": "",
+                    "release": "",
+                    "time": "10:46am - 4/17/2014",
+                    "progress": 80,
+                    "status": "Running"
+                },
+                "UnitTest": {
+                    "testspassed": 1000,
+                    "totaltests": 1300,
+                    "codecovered": 60,
+                    "status": "Accepted"
+                },
+                "Functional": {
+                    "testspassed": 400,
+                    "totaltests": 2000,
+                    "codecovered": 90,
+                    "status": "Accepted"
+                }
+
+            }
+
+        }

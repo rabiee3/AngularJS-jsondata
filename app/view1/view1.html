@@ -1,0 +1,175 @@
+<div class="view1" ng-controller="View1Ctrl">
+
+    <div class="data">
+
+              
+        <div header-template></div> 
+
+
+        <div ng-repeat="x in data" ng-class='{expanded:activeItem==x} ' class="data_item bold clearfix firewall {{   dataitem_checkstate(
+                     x.state,x.type,
+                    metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship),
+                    'Accepted',
+                    check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests),
+                    check_percentage(x.Functional.testspassed,x.Functional.totaltests)
+                    )
+                    }} "  >
+
+            <div class="row clearfix" ng-click='setActive(x)'>
+                <div>
+                    <div class="icon" ng-class="{'cofont-pc':x.type=='Build','cofont-firewall':x.type=='Firewall'}"></div>
+                </div>
+                <div>{{x.name}}</div>
+                <div>{{x.owner}}</div>
+                <div>{{x.timestarted}}</div>
+                <div>{{   dataitem_checkstate(x.state,x.type,metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship),
+                    'Accepted',
+                    check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests),
+                    check_percentage(x.Functional.testspassed,x.Functional.totaltests)
+                    )
+                    }}</div>
+                <div>
+                    <div class="progressbar default_border {{metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship)}}" ng-show="activeItem!=x">
+                        <div class="bar" style="width: {{x.Metrics.progress}}%;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="progressbar default_border {{x.Build.status}}" ng-show="activeItem!=x">
+                        <div class="bar" style="width: {{x.Build.progress}}%;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="progressbar default_border {{check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests)}}" ng-class="" ng-show="activeItem!=x">
+                        <div class="bar" style="width: {{(x.UnitTest.testspassed / x.UnitTest.totaltests)*100}}%;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="progressbar default_border {{check_percentage(x.Functional.testspassed,x.Functional.totaltests)}}" ng-class="" ng-show="activeItem!=x">
+                        <div class="bar" style="width: {{(x.Functional.testspassed / x.Functional.totaltests)*100}}%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details clearfix" ng-class='{visible:activeItem==x}'>
+
+                <div class="details_container clearfix">
+                    <div class="infobox metrics {{metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship)}}">
+                        <h2 class="bold">Metrics</h2>
+
+                        <div class="icon {{metrics_checkvalue(x.Metrics.Test)}}">
+                            <div class="cofont-arrow"></div>
+                            <div class="meter_data white_color">{{x.Metrics.Test}}</div>
+                            <div class="text-center black-color meter_text">Test</div>
+                        </div>
+
+                        <div class="icon {{metrics_checkvalue(x.Metrics.Maintainability)}}">
+                            <div class="cofont-arrow"></div>
+                            <div class="meter_data white_color">{{x.Metrics.Maintainability}}</div>
+                            <div class="text-center black-color meter_text">Maintainability</div>
+                        </div>
+
+                        <div class="icon {{metrics_checkvalue(x.Metrics.Security)}}">
+                            <div class="cofont-arrow"></div>
+                            <div class="meter_data white_color">{{x.Metrics.Security}}</div>
+                            <div class="text-center black-color meter_text">Security</div>
+                        </div>
+
+                        <div class="icon {{metrics_checkvalue(x.Metrics.Workmanship)}}">
+                            <div class="cofont-arrow"></div>
+                            <div class="meter_data white_color">{{x.Metrics.Workmanship}}</div>
+                            <div class="text-center black-color meter_text">Workmanship</div>
+                        </div>
+
+                    </div>
+
+                    <div class="infobox build {{x.Build.status}}">
+                        <h2 class="bold">Build</h2>
+                        <div class="debug">
+                            <img src="images/pc.png" />
+                            <div>Debug</div>
+                        </div>
+
+                        <div class="release">
+                            <img src="images/pc.png" />
+                            <div>Release</div>
+                        </div>
+
+                        <div class="time">
+                            {{x.Build.time}}
+                        </div>
+                    </div>
+
+                    <div class="infobox unit {{check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests)}}">
+                        <h2 class="bold">Unit Test</h2>
+                        <div class="chart_container">
+                            <canvas class="chart chart-pie"  chart-data="[x.UnitTest.testspassed,( x.UnitTest.totaltests - x.UnitTest.testspassed)]" chart-labels="['','']"></canvas>
+                        </div>
+                        <div class="chart_result">
+                            <div class="result">{{Math.round((x.UnitTest.testspassed / x.UnitTest.totaltests)*100)}} %</div>
+                            <div class="subtext">tests passed</div>
+                        </div>
+
+                        <div class="progressbar">
+                            <span class="data">
+                                <span class="text">{{Math.round(x.UnitTest.codecovered)}} %</span>
+                            <br/>
+                            <span class="subject">code covered</span>
+                            </span>
+                            <div class="bar" style="width: {{x.UnitTest.codecovered}}%;"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="infobox functional {{check_percentage(x.Functional.testspassed,x.Functional.totaltests)}}">
+                        <h2 class="bold">Functional Test</h2>
+                        <div class="chart_container">
+                            <canvas class="chart chart-pie" chart-data="[x.Functional.testspassed,( x.Functional.totaltests - x.Functional.testspassed)]" chart-labels="['','']"></canvas>
+                        </div>
+                        <div class="chart_result">
+                            <div class="result">{{Math.round((x.Functional.testspassed / x.Functional.totaltests)*100)}} %</div>
+                            <div class="subtext">tests passed</div>
+                        </div>
+
+                        <div class="progressbar">
+                            <span class="data">
+                                <span class="text">{{Math.round(x.Functional.codecovered)}} %</span>
+                            <br/>
+                            <span class="subject">code covered</span>
+                            </span>
+                            <div class="bar" style="width: {{x.Functional.codecovered}}%;"></div>
+
+                        </div>
+                    </div>
+
+                    <div class="resultbox text-center">
+                        <h2 class="bold black_color">Result:</h2>
+                        <br/>
+                        <div class="result ">
+                            <div class="data1">{{dataitem_response_message(x.type,metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship),
+                    'Accepted',
+                    check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests),
+                    check_percentage(x.Functional.testspassed,x.Functional.totaltests))[0]}}</div>
+                            <div class="data2">
+                            {{dataitem_response_message(x.type,metrics_checkstate(x.Metrics.Test,x.Metrics.Maintainability,x.Metrics.Security,x.Metrics.Workmanship),
+                    'Accepted',
+                    check_percentage(x.UnitTest.testspassed,x.UnitTest.totaltests),
+                    check_percentage(x.Functional.testspassed,x.Functional.totaltests))[1]}}
+                            </div>
+                            <br/>
+                            <div class="btn btn-primary"><span class="cofont-search"></span> Merged Build</div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+         
+        
+    </div>
+
+</div>
